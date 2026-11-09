@@ -1,0 +1,140 @@
+
+### List all projects
+GET http://127.0.0.1:8000/projects/
+
+### Create a project
+POST http://127.0.0.1:8000/projects/
+Content-Type: multipart/form-data; boundary=abc
+
+--abc
+Content-Disposition: form-data; name="name"
+
+BookNest - Online Library Management System
+--abc
+Content-Disposition: form-data; name="description"
+
+<h2>BookNest - Online Library Management System</h2>
+
+<p>
+BookNest is a comprehensive Django-based Online Library Management System designed
+to streamline book catalog management, member registration, borrowing workflows,
+reservations, and reporting.
+</p>
+
+<h3>Key Features</h3>
+<ul>
+    <li>User Authentication & Authorization</li>
+    <li>Book and Category Management</li>
+    <li>ISBN Tracking and Inventory Control</li>
+    <li>Borrow and Return Management</li>
+    <li>Book Reservation System</li>
+    <li>Advanced Search & Filtering</li>
+    <li>User Reviews and Ratings</li>
+    <li>Admin Dashboard with Analytics</li>
+    <li>Django REST Framework API Support</li>
+    <li>CKEditor-based Content Management</li>
+</ul>
+
+<h3>Technology Stack</h3>
+<ul>
+    <li>Django</li>
+    <li>Django REST Framework</li>
+    <li>MySQL</li>
+    <li>Bootstrap 5</li>
+    <li>CKEditor 5</li>
+    <li>JWT Authentication</li>
+</ul>
+
+<h3>Benefits</h3>
+<p>
+BookNest improves operational efficiency, simplifies inventory tracking,
+enhances user experience, and provides detailed reports for better decision-making.
+</p>
+--abc
+Content-Disposition: form-data; name="document"; filename="Booknextdoc.pdf"
+Content-Type: application/pdf
+
+< C:\Users\Albin P Antony\Documents\New folder\Booknextdoc.pdf
+--abc--
+
+### List all projects
+GET http://127.0.0.1:8000/projects/45f4efd7-eeba-43f8-b455-6eb50ea3ad5b/
+
+### Create a project
+PATCH  http://127.0.0.1:8000/projects/9cd41c30-d774-4992-93b9-cf38fdf2efea/
+Content-Type: multipart/form-data; boundary=abc
+
+--abc
+Content-Disposition: form-data; name="name"
+
+Kirk - Online Library Management System
+--abc
+
+### Soft Delete a project
+DELETE  http://127.0.0.1:8000/projects/45f4efd7-eeba-43f8-b455-6eb50ea3ad5b/
+
+### List all projects
+GET http://127.0.0.1:8000/assignedprojects/
+
+### Create an assigned project
+POST http://127.0.0.1:8000/assignedprojects/
+Content-Type: application/json
+
+{
+  "project": 2,
+  "coordinator": 2,
+  "developer": [4, 5],
+  "devolopers": [4, 5],
+  "project_duration": 6,
+  "project_start_date": "2026-11-10",
+  "project_end_date": "2027-05-10"
+}
+
+### List all assigned projects
+GET http://127.0.0.1:8000/assignedprojects/585f7f3e-70ae-4163-aa14-2ffb45360a54/
+
+### Update an assigned project
+PATCH  http://127.0.0.1:8000/assignedprojects/585f7f3e-70ae-4163-aa14-2ffb45360a54/
+Content-Type: application/json
+
+{
+  "developers": [6,4,5,9]
+}
+
+#### Soft Delete an assigned project
+DELETE http://127.0.0.1:8000/assignedprojects/585f7f3e-70ae-4163-aa14-2ffb45360a54/
+
+### Retrieve all tasks for a specific assigned project
+GET http://127.0.0.1:8000/tasks/585f7f3e-70ae-4163-aa14-2ffb45360a54/
+
+
+### create a task
+POST http://127.0.0.1:8000/tasks/585f7f3e-70ae-4163-aa14-2ffb45360a54/
+Content-Type: application/json
+
+{
+  "assigned_to": 7,
+  "title": "Design the project dashboard",
+  "description": "Create the initial dashboard layout.",
+  "priority": "Medium"
+}
+
+### Retrieve an task
+GET http://127.0.0.1:8000/tasks-retrieve-update-destroy/05efea7d-99c1-403b-a69f-c259648852b4/
+
+### Update an task
+PATCH http://127.0.0.1:8000/tasks-retrieve-update-destroy/05efea7d-99c1-403b-a69f-c259648852b4/
+Content-Type: application/json
+
+{
+ 
+  "duration": "02:00:00",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-07"
+}
+
+### Delete an task
+DELETE http://127.0.0.1:8000/tasks-retrieve-update-destroy/05efea7d-99c1-403b-a69f-c259648852b4/
+
+#### Generate tasks for a specific assigned project
+POST http://127.0.0.1:8000/generate-tasks/585f7f3e-70ae-4163-aa14-2ffb45360a54/

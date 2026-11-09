@@ -60,9 +60,7 @@ Thumbs.db
 *__pycache__
 
 
-# migrations
 
-*migrations
 
 *db.sqlite3
 
